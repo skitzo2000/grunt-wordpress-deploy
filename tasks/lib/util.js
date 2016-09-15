@@ -222,9 +222,9 @@ exports.init = function (grunt) {
     backup_path: "<%= backups_dir %>/<%= env %>/<%= date %>/<%= time %>",
     mysqldump: "mysqldump -h <%= host %> -u<%= user %> -p<%= pass %> <%= database %>",
     mysql: "mysql -h <%= host %> -u <%= user %> -p<%= pass %> <%= database %>",
-    rsync_push: "rsync <%= rsync_args %> --delete -e 'ssh <%= ssh_host %>' <%= exclusions %> <%= from %> :<%= to %>",
-    rsync_pull: "rsync <%= rsync_args %> -e 'ssh <%= ssh_host %>' <%= exclusions %> :<%= from %> <%= to %>",
-    ssh: "ssh <%= host %>",
+    rsync_push: "rsync <%= rsync_args %> --delete -e --chown=<%= web_user %>:<%= web_group %> 'ssh <%= ssh_host %>' <%= exclusions %> <%= from %> :<%= to %> -p <%= ssh_port %>",
+    rsync_pull: "rsync <%= rsync_args %> -e 'ssh <%= ssh_host %>' <%= exclusions %> :<%= from %> <%= to %> -p <%= ssh_port %>",
+    ssh: "ssh <%= host %> -p <%= ssh_port %>", 
   };
 
   return exports;

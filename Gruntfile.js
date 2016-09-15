@@ -48,7 +48,10 @@ module.exports = function(grunt) {
         host: 'host_staging',
         url: 'url_staging',
         path: 'path_staging',
-        ssh_host: 'ssh_staging'
+        ssh_host: 'ssh_staging',
+        ssh_port: 'ssh_port', // Usually port 22
+        web_user: 'webuser', // webuser if different from DB user
+        web_group: 'webgroup'  // web group if different from DB user
       }
     },
 
